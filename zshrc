@@ -41,6 +41,7 @@ alias lsregister='/System/Library/Frameworks/CoreServices.framework/Versions/A/F
 # Reload .zshrc
 alias sourcez='exec zsh' export PATH="$HOME/.dotnet:$PATH"
 
+# scrub small/empty folders
 cleanxx() {
   local threshold=${1:-50}
   find /Volumes/Media/XXX/whisparr/scenes -maxdepth 1 -type d ! -name 'scenes' | while read dir; do
@@ -51,3 +52,6 @@ cleanxx() {
     fi
   done
 }
+
+# git add & commit
+alias gitcommit='git add . && git commit -m "update $(date +%Y-%m-%d\ %H:%M)"'
