@@ -15,6 +15,7 @@ FILES=(
   "hosts:644"
   "auto_master:644"
   "auto_nas:600"
+  "autofs.conf:644"
 )
 
 changed=false
@@ -48,9 +49,13 @@ for entry in "${FILES[@]}"; do
   fi
 done
 
-# Reload autofs maps if anything changed
+# Restart automountd and reload maps if anything changed.
+# (automount -vc alone re-reads the maps, but automountd must be
+#  restarted to pick up /etc/autofs.conf changes — it respawns on demand.)
 if $changed; then
-  echo "reloading automount maps..."
+  echo "restarting automountd and reloading maps..."
+  sudo killall automountd 2>/dev/null || true
+  sleep 1
   sudo automount -vc
 else
   echo "nothing changed; automount reload skipped"

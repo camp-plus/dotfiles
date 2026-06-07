@@ -6,4 +6,4 @@
 /home			auto_home	-nobrowse,hidefromfinder
 /Network/Servers	-fstab
 /-			-static
-/Network/NAS    /etc/auto_nas    -nosuid,nobrowse
+/Network/NAS    /etc/auto_nas    -nosuid
