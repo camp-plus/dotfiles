@@ -53,5 +53,18 @@ cleanxx() {
   done
 }
 
+# scrub small/empty folders
+cleanx2() {
+  local threshold=${1:-50}
+  find /Volumes/Media/XXX/x2 -maxdepth 2 -type d ! -name 'scenes' | while read dir; do
+    size=$(du -sm "$dir" | cut -f1)
+    if [ "$size" -lt "$threshold" ]; then
+      rm -rf "$dir"
+      echo "Deleted: $dir (${size}MB)"
+    fi
+  done
+}
+
 # git add & commit
 alias gitcommit='git add . && git commit -m "update $(date +%Y-%m-%d\ %H:%M)"'
+export EXCALIDRAW_API_KEY="sk-S_hEBnBYvOr1iwVv7HkodqRlgUgTSFlI_zhOJOhY5IA4xY9xVEWtUMbPF0V92fVM"

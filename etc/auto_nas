@@ -1,0 +1,8 @@
+# FastNAS (fastnas / 192.168.0.86, user: jrg)
+Media    -fstype=smbfs    ://jrg:entPKI2000@fastnas/Media
+Notes    -fstype=smbfs    ://jrg:entPKI2000@fastnas/Notes
+Docker   -fstype=smbfs    ://jrg:entPKI2000@fastnas/Docker
+
+# UNAS (UNAS-Pro / 192.168.0.111, user: jeff)
+uMedia   -fstype=smbfs    ://jeff:entPKI200011@UNAS-Pro/uMedia
+uXXX     -fstype=smbfs    ://jeff:entPKI200011@UNAS-Pro/uXXX
